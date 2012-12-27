@@ -7,6 +7,7 @@
 //-----------------------------------------------------------------------------
 // Routines to support Mifare DESFire Cards
 //-----------------------------------------------------------------------------
+*/
 #include <stdarg.h>
 
 #include "proxmark3.h"
@@ -208,10 +209,10 @@ int desfire_change_file_settings(int file_id, int security_level, int read_key, 
    return desfire_command(desfire->resp_buf, CHANGE_FILE_SETTINGS, 4, file_id, security_level, rw_key << 4 | 0xe, read_key << 4 | write_key);
 }
 
-+int desfire_read_data(int file_id, int offset, int length, void * buf) {
-+   return desfire_command(buf, READ_DATA, 7, file_id, offset, offset >> 8, offset >> 16, length, length >> 8, length >> 16);
-+}
-+
+int desfire_read_data(int file_id, int offset, int length, void * buf) {
+   return desfire_command(buf, READ_DATA, 7, file_id, offset, offset >> 8, offset >> 16, length, length >> 8, length >> 16);
+}
+
 int desfire_write_data(int file_id, int offset, int length, void * buf, DES3_KS session_key) {
    uint8_t cmd[length+8+10];
    cmd[0] = WRITE_DATA;
@@ -277,7 +278,7 @@ void ReaderMifare(uint32_t param, uint32_t param2, uint8_t * cmd, UsbCommand * a
    if(param & CONNECT)
    {
        iso14443a_setup();
-       res = iso14443a_select_card(NULL);
+       res = iso14443a_select_card(resp,NULL,&param);
        if(!res) {
            DbpString("iso14443a card select failed");
            goto err;
@@ -302,8 +303,13 @@ void ReaderMifare(uint32_t param, uint32_t param2, uint8_t * cmd, UsbCommand * a
        }*/
        UsbSendPacket((void *)ack, sizeof(UsbCommand));
     }
+   
+   if(param & EXECUTE_SPECIAL_COMMAND)
+   {
+       ack->arg[0] = request_authentication(param2 & 0xf, ack->d.asBytes);
+       UsbSendPacket((void *)ack, sizeof(UsbCommand));
+   }   
 
-   }
 
    /*if(param & EXECUTE_SPECIAL_COMMAND)
    {   // special functionality to access in card

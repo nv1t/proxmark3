@@ -26,6 +26,7 @@ int traceLen = 0;
 int rsamples = 0;
 int tracing = TRUE;
 uint8_t trigger = 0;
+
 // the block number for the ISO14443-4 PCB
 static uint8_t iso14_pcb_blocknum = 0;
 
@@ -1538,15 +1539,16 @@ static int GetIso14443aAnswerFromTag(uint8_t *receivedResponse, int maxLen, int 
 	int c;
 
 	// Set FPGA mode to "reader listen mode", no modulation (listen
-	// only, since we are receiving, not transmitting).
-	// Signal field is on with the appropriate LED
-	LED_D_ON();
-	FpgaWriteConfWord(FPGA_MAJOR_MODE_HF_ISO14443A | FPGA_HF_ISO14443A_READER_LISTEN);
+   // only, since we are receiving, not transmitting).
+   // Signal field is on with the appropriate LED
+   LED_D_ON();
+   FpgaWriteConfWord(FPGA_MAJOR_MODE_HF_ISO14443A | FPGA_HF_ISO14443A_READER_LISTEN);
 
-	// Now get the answer from the card
-	Demod.output = receivedResponse;
-	Demod.len = 0;
-	Demod.state = DEMOD_UNSYNCD;
+
+   // Now get the answer from the card
+   Demod.output = receivedResponse;
+   Demod.len = 0;
+   Demod.state = DEMOD_UNSYNCD;
 
 	uint8_t b;
 	if (elapsed) *elapsed = 0;
@@ -1555,13 +1557,14 @@ static int GetIso14443aAnswerFromTag(uint8_t *receivedResponse, int maxLen, int 
 	for(;;) {
 		WDT_HIT();
 
-		if(AT91C_BASE_SSC->SSC_SR & (AT91C_SSC_TXRDY)) {
-			AT91C_BASE_SSC->SSC_THR = 0x00;  // To make use of exact timing of next command from reader!!
+       if(AT91C_BASE_SSC->SSC_SR & (AT91C_SSC_TXRDY)) {
+           AT91C_BASE_SSC->SSC_THR = 0x00;  // To make use of exact timing of next command from reader!!
 			if (elapsed) (*elapsed)++;
-		}
-		if(AT91C_BASE_SSC->SSC_SR & (AT91C_SSC_RXRDY)) {
+       }
+       if(AT91C_BASE_SSC->SSC_SR & (AT91C_SSC_RXRDY)) {
+
 			if(c < iso14a_timeout) { c++; } else { return FALSE; }
-			b = (uint8_t)AT91C_BASE_SSC->SSC_RHR;
+           b = (uint8_t)AT91C_BASE_SSC->SSC_RHR;
 			if(ManchesterDecoding((b>>4) & 0xf)) {
 				*samples = ((c - 1) << 3) + 4;
 				return TRUE;
@@ -1570,8 +1573,8 @@ static int GetIso14443aAnswerFromTag(uint8_t *receivedResponse, int maxLen, int 
 				*samples = c << 3;
 				return TRUE;
 			}
-		}
-	}
+       }
+   }
 }
 
 void ReaderTransmitShort(const uint8_t* bt)
@@ -1871,6 +1874,7 @@ void ReaderMifareX(uint32_t parameter)
 
 		// Receive the (16 bit) "random" nonce
 		if (!ReaderReceive(receivedAnswer)) continue;
+        Dbprintf("nonce: %x %x", receivedAnswer[0], receivedAnswer[1]);
 		memcpy(nt, receivedAnswer, 4);
 
 		// Transmit reader nonce and reader answer
