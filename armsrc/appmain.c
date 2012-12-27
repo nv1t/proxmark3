@@ -746,7 +746,7 @@ void UsbPacketReceived(uint8_t *packet, int len)
 			break;
 			
 		case CMD_READER_MIFARE:
-			ReaderMifare(c->arg[0]);
+			ReaderMifare(c->arg[0], c->arg[1], c->d.asBytes, &ack);
 			break;
 		case CMD_MIFARE_READBL:
 			MifareReadBlock(c->arg[0], c->arg[1], c->arg[2], c->d.asBytes);

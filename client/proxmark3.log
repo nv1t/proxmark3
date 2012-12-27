@@ -1,0 +1,202 @@
+|-----------------------------------------|
+|------ Reading sector access bits...-----|
+|-----------------------------------------|
+#db# READ BLOCK FINISHED       
+#db# READ BLOCK FINISHED       
+#db# READ BLOCK FINISHED       
+#db# READ BLOCK FINISHED       
+#db# READ BLOCK FINISHED       
+#db# READ BLOCK FINISHED       
+#db# READ BLOCK FINISHED       
+#db# READ BLOCK FINISHED       
+#db# READ BLOCK FINISHED       
+#db# READ BLOCK FINISHED       
+#db# READ BLOCK FINISHED       
+#db# READ BLOCK FINISHED       
+#db# READ BLOCK FINISHED       
+#db# READ BLOCK FINISHED       
+#db# READ BLOCK FINISHED       
+#db# READ BLOCK FINISHED       
+|-----------------------------------------|
+|----- Dumping all blocks to file... -----|
+|-----------------------------------------|
+#db# READ BLOCK FINISHED       
+#db# READ BLOCK FINISHED       
+#db# READ BLOCK FINISHED       
+#db# READ BLOCK FINISHED       
+#db# READ BLOCK FINISHED       
+#db# READ BLOCK FINISHED       
+#db# READ BLOCK FINISHED       
+#db# READ BLOCK FINISHED       
+#db# READ BLOCK FINISHED       
+#db# READ BLOCK FINISHED       
+#db# READ BLOCK FINISHED       
+#db# READ BLOCK FINISHED       
+#db# READ BLOCK FINISHED       
+#db# READ BLOCK FINISHED       
+#db# READ BLOCK FINISHED       
+#db# READ BLOCK FINISHED       
+#db# READ BLOCK FINISHED       
+#db# READ BLOCK FINISHED       
+#db# READ BLOCK FINISHED       
+#db# READ BLOCK FINISHED       
+#db# READ BLOCK FINISHED       
+#db# READ BLOCK FINISHED       
+#db# READ BLOCK FINISHED       
+#db# READ BLOCK FINISHED       
+#db# READ BLOCK FINISHED       
+#db# READ BLOCK FINISHED       
+#db# READ BLOCK FINISHED       
+#db# READ BLOCK FINISHED       
+#db# READ BLOCK FINISHED       
+#db# READ BLOCK FINISHED       
+#db# READ BLOCK FINISHED       
+#db# READ BLOCK FINISHED       
+#db# READ BLOCK FINISHED       
+#db# READ BLOCK FINISHED       
+#db# READ BLOCK FINISHED       
+#db# READ BLOCK FINISHED       
+#db# READ BLOCK FINISHED       
+#db# READ BLOCK FINISHED       
+#db# READ BLOCK FINISHED       
+#db# READ BLOCK FINISHED       
+#db# READ BLOCK FINISHED       
+#db# READ BLOCK FINISHED       
+#db# READ BLOCK FINISHED       
+#db# READ BLOCK FINISHED       
+#db# READ BLOCK FINISHED       
+#db# READ BLOCK FINISHED       
+#db# READ BLOCK FINISHED       
+#db# READ BLOCK FINISHED       
+#db# READ BLOCK FINISHED       
+#db# READ BLOCK FINISHED       
+#db# READ BLOCK FINISHED       
+#db# READ BLOCK FINISHED       
+#db# READ BLOCK FINISHED       
+#db# READ BLOCK FINISHED       
+#db# READ BLOCK FINISHED       
+#db# READ BLOCK FINISHED       
+#db# READ BLOCK FINISHED       
+#db# READ BLOCK FINISHED       
+#db# READ BLOCK FINISHED       
+#db# READ BLOCK FINISHED       
+#db# READ BLOCK FINISHED       
+#db# READ BLOCK FINISHED       
+#db# READ BLOCK FINISHED       
+#db# READ BLOCK FINISHED       
+|-----------------------------------------|
+|------ Reading sector access bits...-----|
+|-----------------------------------------|
+#db# READ BLOCK FINISHED       
+#db# READ BLOCK FINISHED       
+#db# READ BLOCK FINISHED       
+#db# READ BLOCK FINISHED       
+#db# READ BLOCK FINISHED       
+#db# READ BLOCK FINISHED       
+#db# READ BLOCK FINISHED       
+#db# READ BLOCK FINISHED       
+#db# READ BLOCK FINISHED       
+#db# READ BLOCK FINISHED       
+#db# READ BLOCK FINISHED       
+#db# READ BLOCK FINISHED       
+#db# READ BLOCK FINISHED       
+#db# READ BLOCK FINISHED       
+#db# READ BLOCK FINISHED       
+#db# READ BLOCK FINISHED       
+|-----------------------------------------|
+|----- Dumping all blocks to file... -----|
+|-----------------------------------------|
+#db# READ BLOCK FINISHED       
+#db# READ BLOCK FINISHED       
+#db# READ BLOCK FINISHED       
+#db# READ BLOCK FINISHED       
+#db# READ BLOCK FINISHED       
+#db# READ BLOCK FINISHED       
+#db# READ BLOCK FINISHED       
+#db# READ BLOCK FINISHED       
+#db# READ BLOCK FINISHED       
+#db# READ BLOCK FINISHED       
+#db# READ BLOCK FINISHED       
+#db# READ BLOCK FINISHED       
+#db# READ BLOCK FINISHED       
+#db# READ BLOCK FINISHED       
+#db# READ BLOCK FINISHED       
+#db# READ BLOCK FINISHED       
+#db# READ BLOCK FINISHED       
+#db# READ BLOCK FINISHED       
+#db# READ BLOCK FINISHED       
+#db# READ BLOCK FINISHED       
+#db# READ BLOCK FINISHED       
+#db# READ BLOCK FINISHED       
+#db# READ BLOCK FINISHED       
+#db# READ BLOCK FINISHED       
+#db# READ BLOCK FINISHED       
+#db# READ BLOCK FINISHED       
+#db# READ BLOCK FINISHED       
+#db# READ BLOCK FINISHED       
+#db# READ BLOCK FINISHED       
+#db# READ BLOCK FINISHED       
+#db# READ BLOCK FINISHED       
+#db# READ BLOCK FINISHED       
+#db# READ BLOCK FINISHED       
+#db# READ BLOCK FINISHED       
+#db# READ BLOCK FINISHED       
+#db# READ BLOCK FINISHED       
+#db# READ BLOCK FINISHED       
+#db# READ BLOCK FINISHED       
+#db# READ BLOCK FINISHED       
+#db# READ BLOCK FINISHED       
+#db# READ BLOCK FINISHED       
+#db# READ BLOCK FINISHED       
+#db# READ BLOCK FINISHED       
+#db# READ BLOCK FINISHED       
+#db# READ BLOCK FINISHED       
+#db# READ BLOCK FINISHED       
+#db# READ BLOCK FINISHED       
+#db# READ BLOCK FINISHED       
+#db# READ BLOCK FINISHED       
+#db# READ BLOCK FINISHED       
+#db# READ BLOCK FINISHED       
+#db# READ BLOCK FINISHED       
+#db# READ BLOCK FINISHED       
+#db# READ BLOCK FINISHED       
+#db# READ BLOCK FINISHED       
+#db# READ BLOCK FINISHED       
+#db# READ BLOCK FINISHED       
+#db# READ BLOCK FINISHED       
+#db# READ BLOCK FINISHED       
+#db# READ BLOCK FINISHED       
+#db# READ BLOCK FINISHED       
+#db# READ BLOCK FINISHED       
+#db# READ BLOCK FINISHED       
+#db# READ BLOCK FINISHED       
+#db# Measuring antenna characteristics, please wait.       
+
+# LF antenna:  0.00 V @   125.00 kHz
+# LF antenna:  0.13 V @   134.00 kHz
+# LF optimal:  0.40 V @   461.54 kHz
+# HF antenna:  5.64 V @    13.56 MHz
+# Your LF antenna is unusable.
+help             This help
+14a              { ISO14443A RFIDs... }
+14b              { ISO14443B RFIDs... }
+15               { ISO15693 RFIDs... }
+epa              { German Identification Card... }
+legic            { LEGIC RFIDs... }
+iclass           { ICLASS RFIDs... }
+mf               { MIFARE RFIDs... }
+tune             Continuously measure HF antenna tuning
+help             This help
+decode           Display deobfuscated and decoded LEGIC RF tag data (use after hf legic reader)
+reader           [offset [length]] -- read bytes from a LEGIC card
+save             <filename> [<length>] -- Store samples
+load             <filename> -- Restore samples
+sim              [phase drift [frame drift [req/resp drift]]] Start tag simulator (use after load or read)
+write            <offset> <length> -- Write sample buffer (user after load or read)
+fill             <offset> <length> <value> -- Fill/Write tag with constant value
+#db# setting up legic card       
+#db# Unknown card format: 26       
+unrecognized command 00000000
+
+unrecognized command 00000000
+

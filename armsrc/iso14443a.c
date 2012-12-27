@@ -1734,6 +1734,8 @@ void iso14443a_setup() {
 	iso14a_timeout = 2048; //default
 }
 
+
+
 int iso14_apdu(uint8_t * cmd, size_t cmd_len, void * data) {
 	uint8_t real_cmd[cmd_len+4];
 	real_cmd[0] = 0x0a; //I-Block
@@ -1815,7 +1817,7 @@ void ReaderIso14443a(UsbCommand * c, UsbCommand * ack)
 // Read an ISO 14443a tag. Send out commands and store answers.
 //
 //-----------------------------------------------------------------------------
-void ReaderMifare(uint32_t parameter)
+void ReaderMifareX(uint32_t parameter)
 {
 	// Mifare AUTH
 	uint8_t mf_auth[]    = { 0x60,0x00,0xf5,0x7b };

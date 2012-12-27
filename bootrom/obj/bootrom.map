@@ -1,0 +1,144 @@
+
+Allocating common symbols
+Common symbol       size              file
+
+start_addr          0x4               obj/bootrom.o
+end_addr            0x4               obj/bootrom.o
+bootrom_unlocked    0x4               obj/bootrom.o
+
+Discarded input sections
+
+ .text          0x0000000000000000        0x0 obj/version.o
+ .data          0x0000000000000000        0x0 obj/version.o
+ .bss           0x0000000000000000        0x0 obj/version.o
+ .text          0x0000000000000000        0x0 obj/ram-reset.o
+ .data          0x0000000000000000        0x0 obj/ram-reset.o
+ .bss           0x0000000000000000        0x0 obj/ram-reset.o
+ .text          0x0000000000000000        0x0 obj/flash-reset.o
+ .data          0x0000000000000000        0x0 obj/flash-reset.o
+ .bss           0x0000000000000000        0x0 obj/flash-reset.o
+ .data          0x0000000000000000        0x0 obj/usb.o
+ .data          0x0000000000000000        0x0 obj/bootrom.o
+ .bss           0x0000000000000000        0x0 obj/bootrom.o
+
+Memory Configuration
+
+Name             Origin             Length             Attributes
+bootphase1       0x0000000000100000 0x0000000000000200
+bootphase2       0x0000000000100200 0x0000000000001e00
+fpgaimage        0x0000000000102000 0x000000000000e000
+osimage          0x0000000000110000 0x0000000000030000
+ram              0x0000000000200000 0x000000000000ffe0
+commonarea       0x000000000020ffe0 0x0000000000000020
+*default*        0x0000000000000000 0xffffffffffffffff
+
+Linker script and memory map
+
+                0x00000000001001fc                _bootphase1_version_pointer = ((ORIGIN (bootphase1) + 0x200) - 0x4)
+                0x0000000000110000                _osimage_entry = ORIGIN (osimage)
+                0x0000000000100000                _bootrom_start = ORIGIN (bootphase1)
+                0x0000000000102000                _bootrom_end = (ORIGIN (bootphase2) + 0x1e00)
+                0x0000000000100000                _flash_start = ORIGIN (bootphase1)
+                0x0000000000140000                _flash_end = (ORIGIN (osimage) + 0x30000)
+                0x000000000020ffd8                _stack_end = ((ORIGIN (ram) + 0xffe0) - 0x8)
+
+.bootphase1     0x0000000000100000      0x200
+ *(.startup)
+ .startup       0x0000000000100000       0x70 obj/flash-reset.o
+                0x0000000000100000                flashstart
+                0x0000000000100070                . = ALIGN (0x4)
+                0x0000000000100070                _version_information_start = .
+ *(.version_information)
+ .version_information
+                0x0000000000100070       0x30 obj/version.o
+                0x0000000000100070                version_information
+                0x00000000000001fc                . = 0x1fc
+ *fill*         0x00000000001000a0      0x15c 
+                0x00000000001001fc        0x4 LONG 0x100070 _version_information_start
+
+.bootphase2     0x0000000000200000     0x1648 load address 0x0000000000100200
+ *(.startphase2)
+ .startphase2   0x0000000000200000        0xc obj/ram-reset.o
+                0x0000000000200000                ram_start
+ *(.text)
+ .text          0x000000000020000c      0xac0 obj/usb.o
+                0x00000000002005d8                UsbSendPacket
+                0x0000000000200904                UsbStart
+                0x00000000002009a4                UsbConnected
+                0x00000000002009e0                UsbPoll
+ .text          0x0000000000200acc      0xa90 obj/bootrom.o
+                0x0000000000200ba4                UsbPacketReceived
+                0x0000000000201354                BootROM
+ *(.text.*)
+ *(.eh_frame)
+ *(.glue_7)
+ .glue_7        0x0000000000000000        0x0 linker stubs
+ *(.glue_7t)
+ .glue_7t       0x0000000000000000        0x0 linker stubs
+ *(.rodata)
+ .rodata        0x000000000020155c       0xec obj/usb.o
+ *(.rodata.*)
+ *(.data)
+ *(.data.*)
+                0x0000000000201648                . = ALIGN (0x4)
+                0x0000000000100200                __bootphase2_src_start__ = LOADADDR (.bootphase2)
+                0x0000000000200000                __bootphase2_start__ = ADDR (.bootphase2)
+                0x0000000000201648                __bootphase2_end__ = (__bootphase2_start__ + SIZEOF (.bootphase2))
+
+.vfp11_veneer   0x0000000000201648        0x0 load address 0x0000000000101848
+ .vfp11_veneer  0x0000000000000000        0x0 linker stubs
+
+.v4_bx          0x0000000000201648        0x0 load address 0x0000000000101848
+ .v4_bx         0x0000000000000000        0x0 linker stubs
+
+.iplt           0x0000000000201648        0x0 load address 0x0000000000101848
+ .iplt          0x0000000000000000        0x0 obj/ram-reset.o
+
+.igot.plt       0x0000000000201648        0x0 load address 0x0000000000101848
+ .igot.plt      0x0000000000000000        0x0 obj/ram-reset.o
+
+.rel.dyn        0x0000000000201648        0x0 load address 0x0000000000101848
+ .rel.iplt      0x0000000000000000        0x0 obj/ram-reset.o
+
+.bss            0x0000000000201648       0x54
+                0x0000000000201648                __bss_start__ = .
+ *(.bss)
+ .bss           0x0000000000201648       0x48 obj/usb.o
+ *(.bss.*)
+                0x0000000000201690                . = ALIGN (0x4)
+                0x0000000000201690                __bss_end__ = .
+ COMMON         0x0000000000201690        0xc obj/bootrom.o
+                0x0000000000201690                start_addr
+                0x0000000000201694                end_addr
+                0x0000000000201698                bootrom_unlocked
+
+.commonarea     0x000000000020ffe0       0x10
+ *(.commonarea)
+ .commonarea    0x000000000020ffe0       0x10 obj/bootrom.o
+                0x000000000020ffe0                common_area
+LOAD obj/version.o
+LOAD obj/ram-reset.o
+LOAD obj/flash-reset.o
+LOAD obj/usb.o
+LOAD obj/bootrom.o
+LOAD /usr/lib/gcc/arm-none-eabi/4.7.2/libgcc.a
+OUTPUT(obj/bootrom.elf elf32-littlearm)
+
+.comment        0x0000000000000000       0x11
+ .comment       0x0000000000000000       0x11 obj/version.o
+                                         0x12 (size before relaxing)
+ .comment       0x0000000000000000       0x12 obj/usb.o
+ .comment       0x0000000000000000       0x12 obj/bootrom.o
+
+.ARM.attributes
+                0x0000000000000000       0x2e
+ .ARM.attributes
+                0x0000000000000000       0x30 obj/version.o
+ .ARM.attributes
+                0x0000000000000030       0x14 obj/ram-reset.o
+ .ARM.attributes
+                0x0000000000000044       0x16 obj/flash-reset.o
+ .ARM.attributes
+                0x000000000000005a       0x30 obj/usb.o
+ .ARM.attributes
+                0x000000000000008a       0x30 obj/bootrom.o

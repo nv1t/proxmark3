@@ -39,7 +39,11 @@ ARMSRC = fpgaloader.c \
 	$(SRC_CRAPTO1) \
 	legic_prng.c \
 	iclass.c \
-	crc.c
+	crc.c \
+    desfire.c \
+    des3part.c \
+    deskey.c \
+    dessp.c
 
 # stdint.h provided locally until GCC 4.5 becomes C99 compliant
 APP_CFLAGS += -I.
