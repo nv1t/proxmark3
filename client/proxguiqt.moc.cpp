@@ -1,7 +1,7 @@
 /****************************************************************************
 ** Meta object code from reading C++ file 'proxguiqt.h'
 **
-** Created: Thu Dec 27 16:12:07 2012
+** Created: Fri Dec 28 14:43:27 2012
 **      by: The Qt Meta Object Compiler version 63 (Qt 4.8.4)
 **
 ** WARNING! All changes made in this file will be lost!

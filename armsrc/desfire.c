@@ -270,10 +270,12 @@ int desfire_change_key(uint8_t key_slot, void * old_key, void * new_key, DES3_KS
    NO_DISCONNECT,
    EXCHANGE_DATA,
 };*/
-void ReaderMifare(uint32_t param, uint32_t param2, uint8_t * cmd, UsbCommand * ack) {
+void ReaderMifareDES(uint32_t param, uint32_t param2, uint8_t * cmd, UsbCommand * ack) {
    uint8_t* resp = desfire->resp_buf;
    uint32_t default_key[] = {0,0,0,0};
    int res;
+
+    DbpString("desfire.c called ReaderMifare");
 
    if(param & CONNECT)
    {
@@ -287,7 +289,7 @@ void ReaderMifare(uint32_t param, uint32_t param2, uint8_t * cmd, UsbCommand * a
            DbpString("not a mifare desfire card");
            goto err;
        }
-
+       Dbprintf("Connect: RES = %d",res);
    }
    if(param & EXECUTE_NATIVE_COMMAND)
    {
@@ -348,6 +350,7 @@ void ReaderMifare(uint32_t param, uint32_t param2, uint8_t * cmd, UsbCommand * a
    }*/
    // keynum, filesettings, crc_params, [new_key/ch_file, 
    if(param & 0x10) {
+       DbpString("desfie_select_app");
        if(desfire_select_app(0xabcdef) < 0) goto err;
 
        if(!desfire_auth(0, default_key, desfire->session_key)) goto err;

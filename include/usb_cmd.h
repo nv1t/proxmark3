@@ -137,6 +137,9 @@ typedef struct {
 
 #define CMD_MIFARE_SNIFFER                                                0x0630
 
+// For mifare desfire
+#define CMD_MIFARE_DES_READER                                             0x0640
+
 #define CMD_UNKNOWN                                                       0xFFFF
 
 // CMD_DEVICE_INFO response packet has flags in arg[0], flag definitions:

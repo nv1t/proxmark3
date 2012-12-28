@@ -21,6 +21,7 @@
 #include "cmdhflegic.h"
 #include "cmdhficlass.h"
 #include "cmdhfmf.h"
+#include "cmdhfdes.h"
 
 static int CmdHelp(const char *Cmd);
 
@@ -41,6 +42,7 @@ static command_t CommandTable[] =
   {"legic",       CmdHFLegic,       0, "{ LEGIC RFIDs... }"},
   {"iclass",      CmdHFiClass,      1, "{ ICLASS RFIDs... }"},
   {"mf",      		CmdHFMF,		      1, "{ MIFARE RFIDs... }"},
+  {"des",         CmdHFDES,         0, "{ MIFARE DESfire}"},
   {"tune",        CmdHFTune,        0, "Continuously measure HF antenna tuning"},
   {NULL, NULL, 0, NULL}
 };

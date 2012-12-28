@@ -1820,7 +1820,7 @@ void ReaderIso14443a(UsbCommand * c, UsbCommand * ack)
 // Read an ISO 14443a tag. Send out commands and store answers.
 //
 //-----------------------------------------------------------------------------
-void ReaderMifareX(uint32_t parameter)
+void ReaderMifare(uint32_t parameter)
 {
 	// Mifare AUTH
 	uint8_t mf_auth[]    = { 0x60,0x00,0xf5,0x7b };
