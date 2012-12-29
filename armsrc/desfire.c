@@ -306,14 +306,15 @@ void ReaderMifareDES(uint32_t param, uint32_t param2, uint8_t * cmd, UsbCommand 
        UsbSendPacket((void *)ack, sizeof(UsbCommand));
     }
    
+///*
    if(param & EXECUTE_SPECIAL_COMMAND)
    {
        ack->arg[0] = request_authentication(param2 & 0xf, ack->d.asBytes);
        UsbSendPacket((void *)ack, sizeof(UsbCommand));
    }   
-
-
-   /*if(param & EXECUTE_SPECIAL_COMMAND)
+//*/
+/*
+   if(param & EXECUTE_SPECIAL_COMMAND)
    {   // special functionality to access in card
        // param2 is cmd
        switch(param2) {
@@ -327,9 +328,10 @@ void ReaderMifareDES(uint32_t param, uint32_t param2, uint8_t * cmd, UsbCommand 
            Dbprintf("desfire command %x unimplemented", param2);
        }
        UsbSendPacket((void *)ack, sizeof(UsbCommand));
-   }*/
-
-   /*res = desfire_command(resp, GET_VERSION, 0);
+   }
+*/
+/*
+   res = desfire_command(resp, GET_VERSION, 0);
    print_result("ver", resp, res);
 
    res = desfire_command(resp, GET_APPLICATION_IDS, 0);
@@ -338,8 +340,9 @@ void ReaderMifareDES(uint32_t param, uint32_t param2, uint8_t * cmd, UsbCommand 
         if(desfire_select_app(0) < 0) goto err;
 
    if(!desfire_auth(0, default_key, desfire->session_key)) goto err; */
-
-   /*if(param & 4)
+//*/
+/*
+   if(param & 4)
        if(desfire_delete_app(0xabcdef) < 0) goto err;
 
    if(param & 1) {
@@ -347,7 +350,8 @@ void ReaderMifareDES(uint32_t param, uint32_t param2, uint8_t * cmd, UsbCommand 
    
            res = desfire_command(resp, GET_APPLICATION_IDS, 0);
        print_result("apps", resp, res);
-   }*/
+   }
+*/
    // keynum, filesettings, crc_params, [new_key/ch_file, 
    if(param & 0x10) {
        DbpString("desfie_select_app");

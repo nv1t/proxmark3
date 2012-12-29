@@ -6,5 +6,5 @@ const struct version_information __attribute__((section(".version_information"))
 	0,
 	1,
 	"svn 0",
-	"2012-12-28 15:10:16",
+	"2012-12-29 05:20:08",
 };
