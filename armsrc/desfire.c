@@ -330,7 +330,7 @@ void ReaderMifareDES(uint32_t param, uint32_t param2, uint8_t * cmd, UsbCommand 
        UsbSendPacket((void *)ack, sizeof(UsbCommand));
    }
 */
-/*
+///*
    res = desfire_command(resp, GET_VERSION, 0);
    print_result("ver", resp, res);
 
@@ -339,7 +339,7 @@ void ReaderMifareDES(uint32_t param, uint32_t param2, uint8_t * cmd, UsbCommand 
 
         if(desfire_select_app(0) < 0) goto err;
 
-   if(!desfire_auth(0, default_key, desfire->session_key)) goto err; */
+   if(!desfire_auth(0, default_key, desfire->session_key)) goto err; 
 //*/
 /*
    if(param & 4)
